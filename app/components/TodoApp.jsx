@@ -23,7 +23,7 @@ handleAddTodo: function(text){
     return (
       <div>
         <TodoList todos = {todos} />,
-        <AddTodo onFormSubmit={this.handleAddTodo} />
+        <AddTodo onAddTodo={this.handleAddTodo} />
       </div>
     );
   }

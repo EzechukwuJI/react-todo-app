@@ -12,7 +12,7 @@ var AddTodo = React.createClass({
     e.preventDefault();
     var todoText  =  this.refs.todo_text.value;
     if (todoText.length > 0){
-      this.props.onFormSubmit(todoText);
+      this.props.onAddTodo(todoText);
       this.refs.todo_text.value="";
     } else {
       alert("you have not entered any text");
@@ -23,7 +23,7 @@ var AddTodo = React.createClass({
   renderTodoForm: function(){
     return (
       <form ref="add_todo_form" onSubmit = {this.handleSubmit} >
-        <input type= "text" ref="todo_text" />
+        <input type= "text" ref="todo_text" placeholder="What do you want to do?"/>
         <button className="button">Add Todo</button>
       </form>
     );
