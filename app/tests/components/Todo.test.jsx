@@ -8,7 +8,6 @@ var Todo = require('Todo');
 
 describe("Todo", () => {
   it('Should exist', () => {
-    // var todolist  = TestUtils.renderIntoDocument(<TodoList />);
     expect(Todo).toExist();
   });
 });

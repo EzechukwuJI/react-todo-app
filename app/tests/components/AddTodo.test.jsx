@@ -14,7 +14,7 @@ describe('AddTodo', () => {
 
   it('should call onFormSubmit if valid string is entered', () => {
     var spy = expect.createSpy();
-    var addtodoForm = TestUtils.renderIntoDocument(<AddTodo onFormSubmit={spy} />);
+    var addtodoForm = TestUtils.renderIntoDocument(<AddTodo onAddTodo={spy} />);
     var $el = $(ReactDOM.findDOMNode(addtodoForm));
     addtodoForm.refs.todo_text.value="my first todo";
     TestUtils.Simulate.submit($el.find('form')[0]);
@@ -23,7 +23,7 @@ describe('AddTodo', () => {
 
   it('should not call onFormSubmit if todotext is empty', () => {
     var spy = expect.createSpy();
-    var addtodoForm = TestUtils.renderIntoDocument(<AddTodo onFormSubmit={spy} />);
+    var addtodoForm = TestUtils.renderIntoDocument(<AddTodo onAddTodo={spy} />);
     var $el = $(ReactDOM.findDOMNode(addtodoForm));
     addtodoForm.refs.todo_text.value="";
     TestUtils.Simulate.submit($el.find('form')[0]);
