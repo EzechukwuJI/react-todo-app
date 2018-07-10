@@ -34,6 +34,31 @@ describe("TodoAPI", () => {
       localStorage.setItem('todos', JSON.stringify(todos));
       var expectedTodo = TodoAPI.getTodos();
       expect(expectedTodo).toEqual(todos);
-    })
+    });
+  });
+  describe('FilterTodos', () => {
+    var todos = [{id: 1, text:"test text boy", completed: false},
+    {id: 2, text:"test text2 boy", completed: true},
+    {id: 3, text:"test text", completed: true}];
+    it("should show all todos including the completed", () => {
+      var filteredTodos = TodoAPI.filterTodos(todos, true, "");
+      expect(filteredTodos.length).toBe(3);
+    });
+    it("should exclude all completed todos", () => {
+      var filteredTodos = TodoAPI.filterTodos(todos, false, "");
+      expect(filteredTodos.length).toBe(1);
+    });
+    it("should sort the todos in order of their completion status", () => {
+      var filteredTodos = TodoAPI.filterTodos(todos, true, "");
+      expect(filteredTodos[0].completed).toBe(false);
+    });
+    it("should filter todos by search text", () => {
+      var filteredTodos = TodoAPI.filterTodos(todos, true, "boy");
+      expect(filteredTodos.length).toBe(2);
+    });
+    it("should show all todos on empty search text", () => {
+      var filteredTodos = TodoAPI.filterTodos(todos, true, "");
+      expect(filteredTodos.length).toBe(3);
+    });
   });
 })
