@@ -17,13 +17,15 @@ describe("TodoApp", () => {
     todoApp.handleAddTodo(todoText);
     expect(todoApp.state.todos[0].text).toBe(todoText);
     expect(todoApp.state.todos.length).toBe(1);
+    expect(todoApp.state.todos[0].createdAt).toBeA('number');
   });
   it("should toggle completed value when handleToggle is called", ()=>{
-    var todoData = {id: 11, text: "Text features",completed:false}
+    var todoData = {id: 11, text: "Text features",completed:false, completedAt:undefined, createdAt:0}
     var todoApp = TestUtils.renderIntoDocument(<TodoApp/>);
     todoApp.setState({todos: [todoData]});
     expect(todoApp.state.todos[0].completed).toBe(false);
     todoApp.handleToggle(todoApp.state.todos[0].id);
     expect(todoApp.state.todos[0].completed).toBe(true);
+    expect(todoApp.state.todos[0].createdAt).toBeA('number');
   });
 });
